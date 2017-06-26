@@ -21,6 +21,7 @@
     "aws-sdk": "^2.77.0",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "node-fetch": "^1.7.1",
     "webtorrent": "^0.98.18",
     "webtorrent-hybrid": "^1.0.6"
   }
