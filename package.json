@@ -1,0 +1,27 @@
+{
+  "name": "webtorrent-audio",
+  "version": "0.0.1",
+  "description": "Stream FT audio articles with WebTorrent",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ftlabs/webtorrent-audio.git"
+  },
+  "author": "Sean M. Tracey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ftlabs/webtorrent-audio/issues"
+  },
+  "homepage": "https://github.com/ftlabs/webtorrent-audio#readme",
+  "dependencies": {
+    "aws-sdk": "^2.77.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "webtorrent": "^0.98.18",
+    "webtorrent-hybrid": "^1.0.6"
+  }
+}
