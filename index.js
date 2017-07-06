@@ -14,6 +14,8 @@ const WTClient = new WebTorrent();
 
 const EXISTING_SEEDS = {};
 
+app.use(express.static('public'));
+
 app.get('/:UUID([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})', (req, resA) => {
 
 	getInformation(req.params.UUID)
@@ -36,7 +38,7 @@ app.get('/:UUID([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})', 
 							}
 						})
 						.then(resB => {
-							WTClient.seed(resB.body, (torrent) => {
+							WTClient.seed(resB.body, {name : `${req.params.UUID}.mp3`},(torrent) => {
 								debug(`Seeding ${req.params.UUID}`, torrent.magnetURI);
 								EXISTING_SEEDS[req.params.UUID] = torrent;
 								resA.json({
@@ -57,7 +59,10 @@ app.get('/:UUID([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})', 
 				}
 
 			} else {
-				resA.json(data);
+				resA.json({
+					status : 'err',
+					message : 'Sorry, no file found.'
+				});
 			}
 
 		})
